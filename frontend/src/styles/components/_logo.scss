@@ -1,0 +1,25 @@
+@use "../colors";
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  justify-content: center;
+}
+
+.logo-image {
+  width: 64px;
+  height: 64px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.logo-image:hover {
+  transform: scale(1.1);
+}
+
+.logo-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: colors.$primary;
+}

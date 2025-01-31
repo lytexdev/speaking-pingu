@@ -2,12 +2,12 @@ import { createApp } from "vue"
 import { createRouter, createWebHistory } from "vue-router"
 import axios from "axios"
 import App from "./App.vue"
-import ChatPage from "./pages/chat-page.vue"
+import ChatView from "./views/ChatView.vue"
 
 axios.defaults.withCredentials = true
 const app = createApp(App)
 const routes = [
-	{ path: "/", name: "Chat", component: ChatPage },
+	{ path: "/", name: "ChatView", component: ChatView },
 ]
 
 const router = createRouter({

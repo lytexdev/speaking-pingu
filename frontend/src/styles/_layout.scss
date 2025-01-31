@@ -1,0 +1,78 @@
+@use "sass:color";
+@use "./colors";
+
+.container {
+  max-width: 1180px;
+  margin: auto;
+  padding: 20px;
+}
+
+.flex {
+  display: flex;
+  gap: 10px;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid colors.$primary;
+  border-radius: 5px;
+  background: colors.$foreground;
+  color: colors.$text-light;
+  font-size: 16px;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.input-field:focus {
+  border-color: colors.$accent;
+  box-shadow: 0 0 8px colors.$accent;
+  outline: none;
+}
+
+.input-field::placeholder {
+  color: colors.$text-light;
+  opacity: 0.6;
+}
+
+.btn {
+  padding: 12px 15px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  background: colors.$primary;
+  color: colors.$text-light;
+}
+
+.btn:hover {
+  background: color.adjust(colors.$primary, $lightness: -10%);
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+.btn-secondary {
+  background: colors.$secondary;
+}
+
+.btn-secondary:hover {
+  background: color.adjust(colors.$secondary, $lightness: -10%);
+}

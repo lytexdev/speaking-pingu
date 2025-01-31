@@ -1,6 +1,13 @@
+@use "./colors";
+@use "./typography";
+@use "./animations";
+@use "./layout";
+
+@use "./components/logo";
+@use "./components/chat";
+
 body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    line-height: 1.6;
+  animation: fadeIn 0.8s ease-out;
+  background: colors.$background;
+  color: colors.$text-light;
 }

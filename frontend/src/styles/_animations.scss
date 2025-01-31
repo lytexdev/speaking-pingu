@@ -1,0 +1,66 @@
+@use "./colors";
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes button-glow {
+  0% { box-shadow: 0 0 5px colors.$accent; }
+  50% { box-shadow: 0 0 20px colors.$accent; }
+  100% { box-shadow: 0 0 5px colors.$accent; }
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.pop {
+  animation: pop 0.5s ease-in-out;
+}
+
+.slide-in {
+  animation: slideIn 0.6s ease-out;
+}
+
+.rotate {
+  animation: rotate 2s linear infinite;
+}
+
+.pulse {
+  animation: pulse 1.5s infinite alternate;
+}
