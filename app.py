@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from flask_cors import CORS
 from config import Config
+from api.deepseek import deepseek_bp
 from models import db, User
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
@@ -8,6 +9,8 @@ app.config.from_object(Config)
 db.init_app(app)
 
 CORS(app, resources={r"/api/*": {"origins": Config.CORS_ORIGINS}})
+
+app.register_blueprint(deepseek_bp, url_prefix="/api")
 
 @app.after_request
 def add_header(response):

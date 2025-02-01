@@ -3,11 +3,8 @@
         <Logo title="Speaking-Pingu AI" />
 
         <div class="chat-box">
-            <div class="message bot">
-                <span>Hello! How can I assist you?</span>
-            </div>
-            <div class="message user">
-                <span>Hey, could you tell me something about raw milk?</span>
+            <div v-for="(message, index) in messages" :key="index" :class="['message', message.role]">
+                <span>{{ message.text }}</span>
             </div>
         </div>
 
@@ -20,14 +17,30 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue"
-import Logo from "@/components/Logo.vue"
+import { ref, onMounted } from "vue";
+import Logo from "@/components/Logo.vue";
+import axios from "axios";
 
-const userInput = ref("")
+const userInput = ref("");
+const messages = ref([
+    { text: "Hello! How can I assist you?", role: "bot" }
+]);
 
-const sendMessage = () => {
-    if (!userInput.value.trim()) return
-    alert("Message Sent: " + userInput.value)
-    userInput.value = ""
-}
+const sendMessage = async () => {
+    if (!userInput.value.trim()) return;
+
+    const userMessage = { text: userInput.value, role: "user" };
+    messages.value.push(userMessage);
+
+    const prompt = userInput.value;
+    userInput.value = "";
+
+    try {
+        const response = await axios.post("/api/chat", { prompt });
+        const botMessage = { text: response.data.response, role: "bot" };
+        messages.value.push(botMessage);
+    } catch (error) {
+        messages.value.push({ text: "Error fetching response!", role: "error" });
+    }
+};
 </script>
